@@ -154,9 +154,9 @@
         function showScreen(screenNumber) {
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.add('hidden');
-                window.scrollTo(0, 0);
             });
             document.getElementById('screen' + screenNumber).classList.remove('hidden');
+            window.scrollTo(0, 0);
         }
 
         function createFallingEmoji() {
