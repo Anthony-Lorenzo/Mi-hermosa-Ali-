@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi niña linda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFC0CB;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            overflow: hidden;
+        }
+        .screen {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s;
+        }
+        h1 {
+            font-size: 200px;
+            color: #333;
+            z-index: 2;
+            margin: 0;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 50px;
+            color: #333;
+            font-weight: 700;
+        }
+        p {
+            font-size: 30px;
+            color: #333;
+            margin: 20px 10%;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 22px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+            font-weight: 700;
+        }
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .scroll-container {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 20px;
+            width: 80%;
+        }
+        .falling {
+            position: absolute;
+            font-size: 30px;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+        @keyframes fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla 1 -->
+    <div id="screen1" class="screen">
+        <h1>Mi Lic. Favorita</h1>
+        <button class="button" onclick="showScreen(2)">Te quiero decir</button>
+    </div>
+
+    <!-- Pantalla 2 -->
+    <div id="screen2" class="screen hidden">
+        <div class="scroll-container">
+            <h2>Mi linda Ali</h2>
+            <p>
+                Eres la estrella que brilla en mi cielo,  
+                la luz que ilumina mi más bello anhelo.  
+                Con solo tu risa, mi mundo renace,  
+                y en cada palabra, mi alma se enlaza.  
+                <br><br>
+                Tan dulce y hermosa, sin comparación,  
+                mi linda Ali, mi más grande emoción.  
+                Si el tiempo se detuviera en un solo instante,  
+                lo haría contigo, en un sueño constante.
+                <br><br>
+                Cuando escucho tu voz 
+                Hay un efecto tan grande en mí, 
+                cuando escucho tu voz; 
+                Es como si descubriera 
+                una canción maravillosa 
+                y sin importar cuándo 
+                o dónde suene, 
+                siempre es perfecta 
+                <br><br>
+                Cuando te conoci fuiste el mayor regalo que pude obtener,
+                con cada conversacion tuya obtenia un lindo amanecer,
+                te aprendi a querer por tu forma de ser,
+                cada dato sobre ti hizo a mi alma enloquecer.
+            </p>
+
+            <h2>Mi Licenciada favorita</h2>
+            <p>
+                Luchas sin miedo, con fuerza y valor,  
+                cada meta que tienes la logras, mi amor.  
+                Con libros y leyes, construyes tu vida,  
+                con cada esfuerzo, tu meta es cumplida.  
+                <br><br>
+                Estoy orgulloso de todo en ti,  
+                tu esfuerzo y tu alma brillan aquí.  
+                No importa qué pase, siempre estaré,  
+                apoyándote en todo, jamás dudaré.
+                <br><br>
+                No soy perfecto, y no estoy dispuesto a intentar serlo.
+                A lo que sí estoy dispuesto es a entregarte lo mejor de mi día a día. 
+                Y a intentar mejorar en las cosas que haga mal, porque 
+                se trata de ser real, no 
+                perfecto.  
+            </p>
+
+            <p>
+                A pesar de la distancia, mi amor no decae,  
+                sin haberte visto, mi corazón hace que me desmaye.  
+                Deseo encontrarte, tomarte la mano,  
+                demostrarte mi amor, sincero y humano.  
+            </p>
+        </div>
+        <button class="button" onclick="showScreen(3)">Y recuerda que</button>
+    </div>
+
+    <!-- Pantalla 3 -->
+    <div id="screen3" class="screen hidden">
+        <h1 style="font-size: 150px;">Te Amo mi niña hermosa</h1>
+    </div>
+
+    <script>
+        function showScreen(screenNumber) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.add('hidden');
+            });
+            document.getElementById('screen' + screenNumber).classList.remove('hidden');
+        }
+
+        function createFallingEmoji() {
+            const emojis = ['💋', '🐻', '🥰', '🌹', '💚','😍', '😘', '✍🏼️'];
+            const emoji = document.createElement('div');
+            emoji.classList.add('falling');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, 5000);
+        }
+
+        setInterval(createFallingEmoji, 300);
+    </script>
+
+</body>
+</html>
