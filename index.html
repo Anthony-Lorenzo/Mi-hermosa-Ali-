@@ -156,7 +156,8 @@
                 screen.classList.add('hidden');
             });
             document.getElementById('screen' + screenNumber).classList.remove('hidden');
-            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
         }
 
         function createFallingEmoji() {
